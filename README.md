@@ -4,7 +4,7 @@
 
 The indelsClassification R function performs the classification of small insertions and deletions (indels) in 84 classes following the criteria described in [The Repertoire of Mutational Signatures in Human Cancer](https://www.biorxiv.org/content/early/2018/05/15/322859) (Alexandrov *et al.*, bioRxiv 2018). An extra indel class has been added to account for "complex insertions/deletions" (see the *PCAWG7_indel_classification_2017_12_08_modified_by_FNadeu.xlsx* document for details).
 
-![alt text](https://github.com/ferrannadeu/indelsClassification/blob/master/indelsClassification.jpeg "indelsClassification output")
+![alt text](./example-data/indelsClassification.jpeg "indelsClassification output")
 
 
 ### Requirements
@@ -54,10 +54,16 @@ library(Rsamtools)
 source("indelsClassification.R")
 
 # read input file with chr, position, ref, alt for some indels
-INDELS <- read.table("indelsClassification_toyExample.tsv", sep = "\t", header = T, stringsAsFactors = F) 
+INDELS <- read.table("indelsClassification_toyExample.tsv", sep = "\t", header = T, stringsAsFactors = F)
+
+## Choose an output method
+#pdf(file=paste0('/path/to/image.pdf'), width = 12, height = 4)
+#png(filename=paste0('/path/to/image.png'), width = 1200, height = 400, type=c("cairo-png"))
+pdf(NULL) # screen output
 
 # run the function
 out <- indelsClassification(mat = INDELS)
+while (!is.null(dev.list()))  dev.off()
 
 # check outputs
 head(out[[1]])

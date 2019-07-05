@@ -45,5 +45,5 @@ unset R_LIBS
 # needed if libs aren't installed centrally
 export R_LIBS_USER=$HOME/local/R-lib-${R_VERSION}
 mkdir -p $R_LIBS_USER
-#/software/R-${R_VERSION}/bin/R < $SCRIPT_PATH/run.R --vanilla --args $SCRIPT_PATH ${OUT_BASE_FILE}.tsv $OUT_BASE_FILE.png
-/software/R-${R_VERSION}/bin/Rscript $SCRIPT_PATH/run.R $SCRIPT_PATH ${OUT_BASE_FILE}.tsv $OUT_BASE_FILE
+
+Rscript $SCRIPT_PATH/run.R $SCRIPT_PATH ${OUT_BASE_FILE}.tsv $OUT_BASE_FILE
