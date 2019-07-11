@@ -41,9 +41,9 @@ else
   zgrep -wF PASS $INDEL_VCF_FILTERED | cut -f 1,2,4,5 >  ${OUT_BASE_FILE}.tsv
 fi
 
-unset R_LIBS
+#unset R_LIBS
 # needed if libs aren't installed centrally
-export R_LIBS_USER=$HOME/local/R-lib-${R_VERSION}
-mkdir -p $R_LIBS_USER
+#export R_LIBS_USER=$HOME/local/R-lib-${R_VERSION}
+#mkdir -p $R_LIBS_USER
 
-Rscript $SCRIPT_PATH/run.R $SCRIPT_PATH ${OUT_BASE_FILE}.tsv $OUT_BASE_FILE
+Rscript $SCRIPT_PATH/../R/run.R $SCRIPT_PATH/../R ${OUT_BASE_FILE}.tsv $OUT_BASE_FILE
